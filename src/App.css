@@ -1,38 +1,79 @@
-.App {
-  text-align: center;
+body {
+  background-color: rgba(214, 214, 216, 0.945);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+.filter {
+  border: 2px solid brown;
+  border-radius: 5px;
+  padding: 4px;
+  position: relative;
+  top: 80px;
+  left: 140px;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.tablescroll {
+  height: 200px;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  box-shadow: 1px 1px 12px black;
+  border: 1px solid brown;
+  border-radius: 5px;
+  position: relative;
+  top: 100px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: rgba(165, 42, 42, 0.192);
+  overflow: auto;
+  white-space: nowrap;
+
+}
+
+table {
+  text-align: center;
+  /* border: 2px solid brown; */
+  border-radius: 5px;
+  /* background-color: rgba(165, 42, 42, 0.192); */
+}
+
+
+.edit {
+  border: none;
+ background-color: transparent;
+ color: rgba(0, 0, 255, 0.815);
+  
+
+}
+.edit:hover {
+  cursor: pointer;
+}
+
+.delete {
+  border: 2px solid brown;
+  border-radius: 5px;
+  
+}
+.delete:hover {
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: rgba(165, 42, 42, 0.623);
   color: white;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.sticky-col {
+  position: -webkit-sticky;
+  position: sticky;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.first-col {
+  width: 100px;
+  max-width: 100px;
+  min-width: 100px;
+  left: -20px;
+}
+.second-col {
+  width: 150px;
+  max-width: 150px;
+  min-width: 150px;
+  right: -30px;
 }
