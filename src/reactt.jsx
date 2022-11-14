@@ -9,8 +9,12 @@ class Student extends React.Component {
         this.state = {
             count: 1,
             data: student,
+            id: '',
             name: '',
             status: '',
+            address: '',
+            univ: '',
+            job: '',
             search: 'id',
             active: null,
         };
@@ -23,8 +27,8 @@ class Student extends React.Component {
 
         const onFilter = (e) => {
             const { value } = e.target;
-            let res = student.filter((item) =>
-                `${item[this.state.search]}`.toLowerCase().includes(value.toLowerCase())
+            let res = student.filter((i) =>
+                `${i[this.state.search]}`.toLowerCase().includes(value.toLowerCase())
             );
             this.setState({
                 data: res,
@@ -38,7 +42,7 @@ class Student extends React.Component {
         };
         const onAdd = () => {
             let user = {
-                id: Date.now(),
+                id: this.state.id,
                 name: this.state.name,
                 status: this.state.status,
                 address: this.state.address,
@@ -49,6 +53,9 @@ class Student extends React.Component {
                 data: [...this.state.data, user],
                 name: '',
                 status: '',
+                address: '',
+                univ: '',
+                job: '',
             });
             console.log(user);
         };
@@ -76,7 +83,7 @@ class Student extends React.Component {
         };
         const Oncancel = (value) => {
             console.log(value);
-            this.setState({active : null})
+            this.setState({ active: null })
         }
         return (
             <div>
@@ -118,12 +125,11 @@ class Student extends React.Component {
                     placeholder='Job'
                     className='inp'
                 />
-                <button onClick={onAdd}>add</button>
+                <button onClick={onAdd} className={'delete'}>add</button>
                 <hr />
                 <select onChange={onSelect} name='' id=''>
                     <option value='id'>ID</option>
                     <option value='name'>Name</option>
-                    <option value='status'>Status</option>
                 </select>
                 <input onChange={onFilter} type='text' placeholder='search' />
                 <hr />
@@ -207,24 +213,24 @@ class Student extends React.Component {
                                                 )}
                                             </td>
                                             {cancel ?
-                                            (<React.Fragment>
-                                                <td>
-                                                    <button className="delete" onClick={() => Oncancel(id)}>cancel</button>
+                                                (<React.Fragment>
+                                                    <td>
+                                                        <button className="delete" onClick={() => Oncancel(id)}>cancel</button>
 
-                                                </td>
-                                                <td>
-                                                    <button className='edit' onClick={() => onEdit({ id, name, status }, this.state.active?.id === id)}>Edit</button>
-                                                </td>
-                                            </React.Fragment>) :
-                                            (<React.Fragment>
-                                            <td>
-                                                <button className="delete" onClick={() => onDelete(id)}>delete</button>
+                                                    </td>
+                                                    <td>
+                                                        <button className='edit' onClick={() => onEdit({ id, name, status, address, univ, job }, this.state.active?.id === id)}>save</button>
+                                                    </td>
+                                                </React.Fragment>) :
+                                                (<React.Fragment>
+                                                    <td>
+                                                        <button className="delete" onClick={() => onDelete(id)}>delete</button>
 
-                                            </td>
-                                            <td>
-                                                <button className='edit' onClick={() => onEdit({ id, name, status }, this.state.active?.id === id)}>Edit</button>
-                                            </td>
-                                            </React.Fragment>)
+                                                    </td>
+                                                    <td>
+                                                        <button className='edit' onClick={() => onEdit({ id, name, status, address, univ, job }, this.state.active?.id === id)}>edit</button>
+                                                    </td>
+                                                </React.Fragment>)
                                             }
                                         </tr>
                                     );
@@ -232,7 +238,7 @@ class Student extends React.Component {
                             ) : (
                                 <tr>
                                     <th colSpan={5}>
-                                        <h1>no data</h1>
+                                        <h1>Noup</h1>
                                     </th>
                                 </tr>
                             )}
